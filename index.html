@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Juan Pablo Pinedo">
+  <title>Guessing Game</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    // Do an infinite loop for extra points!
+    while(true) {
+      
+      // set answer as nothing at first
+      let answer = null;
+      // calculate random number
+      let randomNumber = Math.floor(Math.random() * 10) +1;
+      // keep track of attempts
+      let guessAttempts = 0;
+
+      console.log(randomNumber);
+
+      // loop until guessed number
+      while (answer !== randomNumber) {
+        // this will run the first time, or in case of invalid inputs
+        if (!answer) {
+          answer = parseInt(prompt('Guess a number between 1 and 10.'));
+        // this will run with valid inputs, but not correct answer
+        } else {
+          answer = parseInt(prompt(randomNumber > answer ? 'Guess was too low, guess again.' : 'Guess was too high, guess again.'));
+        }
+
+        console.log(answer);
+        // incremet attempt number each cycle
+        guessAttempts++;
+      }
+
+      // after breaking out of the loop, show the winning message!
+      alert(`You guessed it in ${guessAttempts} guesses!`);
+    }
+
+  </script>
+</body>
+</html>
